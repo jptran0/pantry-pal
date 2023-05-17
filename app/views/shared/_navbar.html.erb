@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6A8B41">
+  <div class="container-fluid">
+
+    <a href="/" class="navbar-brand nav-brand-text">
+      <i class="fa-solid fa-utensils fa-lg" style="color: #f4faec;"></i>
+      Pantry Pal
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item nav-text">
+          <%= link_to 'My Pantry', root_path, class: "nav-link active" %>
+        </li>
+
+        <li class="nav-item nav-text">
+          <%= link_to 'Ingredients', items_path, class: "nav-link active" %>
+        </li>
+
+        <li class="nav-item nav-text">
+          <%= link_to 'Matched Recipes', recipes_path, class: "nav-link active" %>
+        </li>
+
+        <% if @current_user.present? %>
+          <li class="nav-item nav-text">
+            <%= link_to 'Profile', edit_user_profile_path, class: "nav-link active" %>
+          </li>
+
+          <li class="nav-item nav-text">
+            <a class="nav-link" href="/user_sign_out">Sign Out</a>
+          </li>
+        <% else %>
+          <li class="nav-item nav-text">
+            <a class="nav-link" href="/user_sign_up">Sign Up</a>
+          </li>
+
+          <li class="nav-item nav-text">
+            <a class="nav-link" href="/user_sign_in">Sign In</a>
+          </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>

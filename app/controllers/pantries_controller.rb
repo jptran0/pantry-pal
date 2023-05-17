@@ -1,8 +1,11 @@
 class PantriesController < ApplicationController
   def index
-    matching_pantries = Pantry.all
+    @matching_pantries = Pantry.where({ user_id: @current_user.id }).first
 
-    @list_of_pantries = matching_pantries.order({ :created_at => :desc })
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+
+    @current_user.pantry_items.where({ })
 
     render({ :template => "pantries/index.html.erb" })
   end
@@ -25,7 +28,7 @@ class PantriesController < ApplicationController
 
     if the_pantry.valid?
       the_pantry.save
-      redirect_to("/pantries", { :notice => "Pantry created successfully." })
+      redirect_to("/pantries", { :notice => "Ingredient added!" })
     else
       redirect_to("/pantries", { :alert => the_pantry.errors.full_messages.to_sentence })
     end
@@ -41,9 +44,9 @@ class PantriesController < ApplicationController
 
     if the_pantry.valid?
       the_pantry.save
-      redirect_to("/pantries/#{the_pantry.id}", { :notice => "Pantry updated successfully."} )
+      redirect_to("/pantries", { :notice => "Pantry updated successfully."} )
     else
-      redirect_to("/pantries/#{the_pantry.id}", { :alert => the_pantry.errors.full_messages.to_sentence })
+      redirect_to("/pantries", { :alert => the_pantry.errors.full_messages.to_sentence })
     end
   end
 

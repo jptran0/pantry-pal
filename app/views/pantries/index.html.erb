@@ -1,9 +1,7 @@
 <div>
-  <div>
-    <h1>
-      List of all pantries
-    </h1>
-  </div>
+  <h1 class="head-text">
+    My Pantry
+  </h1>
 </div>
 
 <hr>
@@ -46,73 +44,9 @@
   </div>
 </div>
 
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Item
-        </th>
-
-        <th>
-          Category
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_pantries.each do |a_pantry| %>
-      <tr>
-        <td>
-          <%= a_pantry.id %>
-        </td>
-
-        <td>
-          <%= a_pantry.item %>
-        </td>
-
-        <td>
-          <%= a_pantry.category_id %>
-        </td>
-
-        <td>
-          <%= a_pantry.user_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_pantry.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_pantry.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/pantries/<%= a_pantry.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
 
 <hr>
+
+<br>
+
+<%= render partial: "pantries/pantries" %>

@@ -9,4 +9,5 @@
 #  updated_at     :datetime         not null
 #
 class Category < ApplicationRecord
+  has_many  :pantries, class_name: "Pantry", foreign_key: "category_id", dependent: :nullify
 end
