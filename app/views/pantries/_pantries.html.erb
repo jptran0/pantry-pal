@@ -4,16 +4,16 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="heading<%= a_category.id %>">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= a_category.id %>" aria-expanded="false" aria-controls="collapse<%= a_category.id %>">
-        <% pan_count = @current_user.pantry_items.where({ category_id: a_category.id }) %>
-        <%= a_category.category %> (<%= pan_count.count %>)
+        <% pan_count = @current_user.pantries.where({ category_id: a_category.id }) %>
+        <%= a_category.name %> (<%= pan_count.count %>)
       </button>
     </h2>
     <div id="collapse<%= a_category.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= a_category.id %>" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <form>
-        <% @current_user.pantry_items.each do |pantry| %>
+        <% @current_user.pantries.each do |pantry| %>
           <% if pantry.category_id == a_category.id %>
-            <% match = Pantry.where({ user_id: @current_user.id, item_id: pantry.id }).first %>
+            <% match = Pantry.where({ user_id: @current_user.id, id: pantry.id }).first %>
               <button type="submit" formaction="/delete_pantry/<%= match.id %>" formmethod="get" class="btn btn-secondary">
                 <%= pantry.item %>
               </button>
