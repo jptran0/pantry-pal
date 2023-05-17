@@ -20,7 +20,6 @@ class CategoriesController < ApplicationController
   def create
     the_category = Category.new
     the_category.name = params.fetch("query_name")
-    the_category.pantries_count = params.fetch("query_pantries_count")
 
     if the_category.valid?
       the_category.save
