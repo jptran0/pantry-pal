@@ -1,7 +1,9 @@
-# Base Rails
+# PantryPal
+Zero waste cooking!
 
-## Standard Workflow
+## Features
 
- 1. Start the web server by running `bin/server`.
- 1. Navigate to your live application.
- 1. As you work, remember to navigate to `/git` and **commit often as you work.**
+ 1. Log your pantry items
+ 2. Remove pantry items by clicking on the item itself
+ 3. Get matched with recipes catered to your pantry using Spoonacular's recipe API (requests are limited)
+ 4. Log in credentials: email = rolly@example.com / password = password
