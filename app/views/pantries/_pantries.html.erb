@@ -14,7 +14,7 @@
         <% @current_user.pantry_items.each do |pantry| %>
           <% if pantry.category_id == a_category.id %>
             <% match = Pantry.where({ user_id: @current_user.id, item_id: pantry.id }).first %>
-              <button type="submit" formaction="/del_pantry/<%= match.id %>" formmethod="get" class="btn btn-secondary">
+              <button type="submit" formaction="/delete_pantry/<%= match.id %>" formmethod="get" class="btn btn-secondary">
                 <%= pantry.item %>
               </button>
           <% end %>

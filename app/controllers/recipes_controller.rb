@@ -1,18 +1,39 @@
 class RecipesController < ApplicationController
+  before_action(:load_matching_recipes)
+
+  def load_matching_recipes
+    require "open-uri"
+    require "json"
+
+    @spoonacular_key = ENV.fetch("SPOONACULAR_KEY")
+
+    ingredients = Array.new
+
+    @current_user.pantries.each do |pantry|
+      ingredients.push(pantry.item)
+    end
+
+
+    spoonacular_url = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=#{@spoonacular_key}&ingredients=#{ingredients}&ranking=2&number=20"
+    #{BASE_URL}?apiKey=#{@api_key}&ingredients=#{ingredients.join(',')}
+
+    raw_spoonacular_data = URI.open(spoonacular_url).read
+    @parsed_spoonacular_data = JSON.parse(raw_spoonacular_data)
+
+    #@results_array = parsed_spoonacular_data.fetch("results")
+
+    # recipe id
+  end
+  
   def index
-    matching_recipes = Recipe.all
-
-    @list_of_recipes = matching_recipes.order({ :created_at => :desc })
-
-    render({ :template => "recipes/index.html.erb" })
   end
 
   def show
+    recipe_url = "https://api.spoonacular.com/recipes/#{the_id}/information?apiKey=#{@spoonacular_key}"
+    raw_recipe_data = URI.open(recipe_url).read
+    @the_recipe = JSON.parse(raw_recipe_data)
     the_id = params.fetch("path_id")
 
-    matching_recipes = Recipe.where({ :id => the_id })
-
-    @the_recipe = matching_recipes.at(0)
 
     render({ :template => "recipes/show.html.erb" })
   end

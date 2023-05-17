@@ -6,43 +6,23 @@
 
 <hr>
 
-<div>
-  <div>
-    <h2>
-      Add a new pantry
-    </h2>
-
-    <form action="/insert_pantry" method="post">
-      <div>
-        <label for="item_box">
-          Item
-        </label>
-
-        <input type="text" id="item_box" name="query_item">
-      </div>
-
-      <div>
-        <label for="category_id_box">
-          Category
-        </label>
-
-        <input type="text" id="category_id_box" name="query_category_id">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <button>
-        Add Item
-      </button>
-    </form>
+<form action="/insert_pantry" class="row g-3">
+  <div class="col-md-6">
+    <label for="inputItem" class="form-label">Item</label>
+    <input type="text" class="form-control" id="inputItem" name="query_item">
   </div>
-</div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  
+  <div class="col-12">
+    <button type="submit" class="btn btn-success">Add Ingredient</button>
+  </div>
+</form>
 
 <hr>
 

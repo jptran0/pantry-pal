@@ -2,10 +2,10 @@ class PantriesController < ApplicationController
   def index
     @matching_pantries = Pantry.where({ user_id: @current_user.id }).first
 
-    @q = Item.ransack(params[:q])
-    @items = @q.result
+    #@q = Item.ransack(params[:q])
+    #@items = @q.result
 
-    @current_user.pantry_items.where({ })
+    @current_user.pantries.where({ })
 
     render({ :template => "pantries/index.html.erb" })
   end
@@ -24,7 +24,7 @@ class PantriesController < ApplicationController
     the_pantry = Pantry.new
     the_pantry.item = params.fetch("query_item")
     the_pantry.category_id = params.fetch("query_category_id")
-    the_pantry.user_id = params.fetch("query_user_id")
+    the_pantry.user_id = @current_user.id
 
     if the_pantry.valid?
       the_pantry.save
@@ -56,6 +56,6 @@ class PantriesController < ApplicationController
 
     the_pantry.destroy
 
-    redirect_to("/pantries", { :notice => "Pantry deleted successfully."} )
+    redirect_to("/pantries", { :notice => "Ingredient removed!"} )
   end
 end

@@ -1,70 +1,33 @@
 <div>
   <div>
-    <h1>
-      List of all recipes
+    <h1 class="head-text">
+      Best Matched Recipes
     </h1>
   </div>
 </div>
 
 <hr>
 
-<div>
-  <div>
-    <h2>
-      Add a new recipe
-    </h2>
-
-    <form action="/insert_recipe" method="post">
-      <button>
-        Create recipe
-      </button>
-    </form>
+<div class="row">
+<% @parsed_spoonacular_data.each do |recipe| %>
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+      <img src="<%= recipe.fetch("image") %>" class="card-img-top" alt="recipe picture">
+      <div class="card-body">
+        <h5 class="card-title recipe-header"><%= recipe.fetch("title") %></h5>
+        <p class="card-text body-text">Missing Ingredients (<%= recipe.fetch("missedIngredientCount") %>)</p>
+        <ul>
+          <% recipe.fetch("missedIngredients").each do |missed_items| %>
+          <li><%= missed_items.fetch("name") %></li>
+          <% end %>
+        </ul>
+        <% recipe_url = "https://api.spoonacular.com/recipes/#{recipe.fetch("id")}/information?apiKey=#{@spoonacular_key}" %>
+        <% raw_recipe_data = URI.open(recipe_url).read %>
+        <% the_recipe = JSON.parse(raw_recipe_data) %>
+        <a href="<%= the_recipe.fetch("sourceUrl") %>" target="_blank" class="btn btn-success">Full Recipe</a>
+      </div>
+    </div>
   </div>
+<%end%>
 </div>
-
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_recipes.each do |a_recipe| %>
-      <tr>
-        <td>
-          <%= a_recipe.id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_recipe.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_recipe.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/recipes/<%= a_recipe.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
 <hr>

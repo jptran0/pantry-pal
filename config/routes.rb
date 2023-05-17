@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
   #------------------------------
 
+  root "pantries#index"
+
   # Routes for the User account:
 
   # SIGN UP FORM
