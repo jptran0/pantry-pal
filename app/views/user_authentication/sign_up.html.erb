@@ -1,25 +1,40 @@
 <h1>Sign up</h1>
 
 <form action="/insert_user" method="post">
+  <div class="row g-2">
+    <div class="col-method">
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="query_email">
+        <label for="floatingInput">Email address</label>
+      </div>
+    </div>
 
-  <div>
-    <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
-  </div>
-            
-  <div>
-    <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+    <div class="col-method">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingUser" placeholder="Password" name="query_username">
+        <label for="floatingUser">Username</label>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="query_password">
+        <label for="floatingPassword">Password</label>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="query_password_confirmation">
+        <label for="floatingPassword">Password Confirmation</label>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
-    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+<br>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign Up</button>
   </div>
-
-  <button>
-    Sign up
-  </button>
 </form>
 
 <hr>

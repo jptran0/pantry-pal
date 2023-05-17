@@ -2,27 +2,52 @@
   <h5>
     Edit User Account
   </h5>
-
-  <div>
-    <form action="/modify_user" method="post">
-      <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
-      </div>
-
-      <div>
-        <label for="password_box">Password</label>
-        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-      </div>
-    
-      <div>
-        <label for="password_confirmation_box">Password Confirmation</label>
-        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-      </div>
-
-      <button>
-        Update account
-      </button>
-    </form>
-  </div>
 </div>
+
+<form action="/modify_user" method="post">
+  <div class="row g-2">
+    <div class="col-method">
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="query_email" value="<%= @current_user.email %>">
+        <label for="floatingInput">Email address</label>
+      </div>
+    </div>
+
+    <div class="col-method">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingUser" placeholder="Password" name="query_username" value="<%= @current_user.username %>">
+        <label for="floatingUser">Username</label>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="query_password">
+        <label for="floatingPassword">Password</label>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="query_password_confirmation">
+        <label for="floatingPassword">Password Confirmation</label>
+      </div>
+    </div>
+  </div>
+
+<br>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+</form>
+
+<hr>
+<div>
+  <h5>
+    Delete Account
+  </h5>
+</div>
+
+<form action="/cancer_user_account">
+  <button type="button" class="btn btn-danger">Delete Account</button>
+</form>
