@@ -1,0 +1,13 @@
+# == Schema Information
+#
+# Table name: pantries
+#
+#  id          :integer          not null, primary key
+#  item        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#  user_id     :integer
+#
+class Pantry < ApplicationRecord
+end

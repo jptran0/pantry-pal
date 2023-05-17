@@ -12,3 +12,56 @@
  *
  *= require_self
  */
+ .button-pad {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.cat {
+  margin: 4px;
+  border-radius: 4px;
+  border: 1px solid #372c44;
+  overflow: hidden;
+  float: left;
+}
+
+.action input:checked + span{background-color: #F75A1B;}
+
+.body-bg {
+  background-color: #f4faec;
+}
+
+.head-text {
+  color: #7b3c15;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.nav-brand-text {
+  color: #f4faec;
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 25px;
+}
+
+.nav-text {
+  color: #f4faec;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 20px;
+}
+
+.form-label {
+  color: #7b3c15;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 20px;
+}
+
+.recipe-header {
+  color: #7b3c15;
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 20px;
+}
+
+.body-text {
+  color: #7b3c15;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 18px;
+}

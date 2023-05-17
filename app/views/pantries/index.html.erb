@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all pantries
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new pantry
+    </h2>
+
+    <form action="/insert_pantry" method="post">
+      <div>
+        <label for="item_box">
+          Item
+        </label>
+
+        <input type="text" id="item_box" name="query_item">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create pantry
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Item
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_pantries.each do |a_pantry| %>
+      <tr>
+        <td>
+          <%= a_pantry.id %>
+        </td>
+
+        <td>
+          <%= a_pantry.item %>
+        </td>
+
+        <td>
+          <%= a_pantry.category_id %>
+        </td>
+
+        <td>
+          <%= a_pantry.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_pantry.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_pantry.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/pantries/<%= a_pantry.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

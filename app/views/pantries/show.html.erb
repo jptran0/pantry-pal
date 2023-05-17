@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Pantry #<%= @the_pantry.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/pantries">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_pantry/<%= @the_pantry.id %>">
+          Delete pantry
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Item
+      </dt>
+      <dd>
+        <%= @the_pantry.item %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_pantry.category_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_pantry.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_pantry.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_pantry.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit pantry
+    </h2>
+
+    <form action="/modify_pantry/<%= @the_pantry.id %>"  method="post" >
+      <div>
+        <label for="item_box">
+          Item
+        </label>
+
+        <input type="text" id="item_box" name="query_item" value="<%= @the_pantry.item %>">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_pantry.category_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_pantry.user_id %>">
+      </div>
+
+      <button>
+        Update pantry
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
